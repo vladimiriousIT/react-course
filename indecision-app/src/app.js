@@ -19,14 +19,41 @@ var templateOne = (
 //  p --> Location: Philadelphia
 //  Render templateTwo instead of template
 
+var user = {
+    'userName': 'Vladimir Stratiev',
+    'userAge': 28,
+    'userLocation': 'Sofia'
+};
+
+// var userName = 'Vladimir Stratiev';
+// var userAge = 28;
+// var userLocation = 'Sofia';
 var templateTwo = (
     <div>
-    <h1>Vladimir Stratiev</h1>
-    <p>Age: 28</p>
-    <p>Location: Sofia</p>
+    <h1>{user.userName}</h1>
+    <p>Age: {userAge}</p>
+    <p>Location: {user.userLocation}</p>
     </div>
-)
+);
+
+//create app object title/subtitle
+//use title/subtitle in the template
+//render template
+var app = {
+    'title': 'The Matrix',
+    'subtitles': 'The Matrix Subtitles'
+}
+
+var templateObject = (
+    <div>
+        <h1>The Movie is: {app.title}</h1> 
+        <p>Subtitles: {app.subtitles}</p> 
+        <ol>
+        <li>Item One</li>
+        <li>Item Two</li>
+        </ol>
+    </div>);
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(templateObject, appRoot);
