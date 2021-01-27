@@ -8,6 +8,8 @@ var app = {
     options: []
 };
 
+//const numbers = [55, 101, 1000];
+
 var onFormSubmit = function onFormSubmit(e) {
     e.preventDefault();
 
@@ -112,16 +114,18 @@ var renderTemplate = function renderTemplate() {
         React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'Item One'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Item Two'
-            )
+            /* map over app.options getting back an array of list (set key and text for each) 
+               app.options.map((option) =>{
+                   return <li key={option}>{option}</li>
+               })
+            */
+            app.options.map(function (option) {
+                return React.createElement(
+                    'li',
+                    { key: option },
+                    option
+                );
+            })
         ),
         React.createElement(
             'form',
