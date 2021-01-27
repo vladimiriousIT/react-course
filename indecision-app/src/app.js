@@ -2,7 +2,7 @@ console.log('App.js is Running!');
 
 //JSX - JavaScript XML
 //var template = /*#__PURE__*/React.createElement("h1", {id: "1234"}, "Something New!");
-var templateInfo = (
+const templateInfo = (
     <div>
         <h1>Indecision App</h1> 
         <p> This is Some info</p> 
@@ -19,7 +19,7 @@ var templateInfo = (
 //  p --> Location: Philadelphia
 //  Render templateTwo instead of template
 
-var user = {
+const user = {
     userName: 'Vladimir Stratiev',
     userAge: 28,
     userLocation: 'Sofia'
@@ -34,7 +34,7 @@ function getLocation(location){
         return <p>Location: {location} </p>;
     }
 }
-var templateUser = (
+const templateUser = (
     <div>
     <h1>{user.userName ? user.userName : 'Anonymous'}</h1>
     {(user.userAge && user.userAge >= 18) && <p>Age: {user.userAge}</p> }
@@ -48,13 +48,16 @@ var templateUser = (
 
 // II --> only render the subtitle (and p tag) if subtitle exist - logical and operator
 // render new p tag - if options.legth > 0 "Here are your options" "No options"
-var app = {
+
+// III --> Use const if we are never reasighn
+// Only wen we reasighn veriable then use let 
+const app = {
     title: 'The Matrix',
     subtitles: 'Put your life in the hands of a computer',
     options: ['One Option', 'Two Options']
 }
 
-var templateApp = (
+const templateApp = (
     <div>
         <h1>The Movie is: {app.title}</h1> 
         <p>Subtitles: {app.subtitles}</p> 

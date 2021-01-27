@@ -84,6 +84,9 @@ var templateUser = React.createElement(
 
 // II --> only render the subtitle (and p tag) if subtitle exist - logical and operator
 // render new p tag - if options.legth > 0 "Here are your options" "No options"
+
+// III --> Use const if we are never reasighn
+// Only wen we reasighn veriable then use let 
 var app = {
     title: 'The Matrix',
     subtitles: 'Put your life in the hands of a computer',
