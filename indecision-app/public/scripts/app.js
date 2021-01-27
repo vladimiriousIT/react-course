@@ -4,7 +4,7 @@ console.log('App.js is Running!');
 
 //JSX - JavaScript XML
 //var template = /*#__PURE__*/React.createElement("h1", {id: "1234"}, "Something New!");
-var templateOne = React.createElement(
+var templateInfo = React.createElement(
     'div',
     null,
     React.createElement(
@@ -41,45 +41,56 @@ var templateOne = React.createElement(
 //  Render templateTwo instead of template
 
 var user = {
-    'userName': 'Vladimir Stratiev',
-    'userAge': 28,
-    'userLocation': 'Sofia'
+    userName: 'Vladimir Stratiev',
+    userAge: 28,
+    userLocation: 'Sofia'
 };
 
 // var userName = 'Vladimir Stratiev';
 // var userAge = 28;
 // var userLocation = 'Sofia';
-var templateTwo = React.createElement(
+
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location,
+            ' '
+        );
+    }
+}
+var templateUser = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        user.userName
+        user.userName ? user.userName : 'Anonymous'
     ),
-    React.createElement(
+    user.userAge && user.userAge >= 18 && React.createElement(
         'p',
         null,
         'Age: ',
         user.userAge
     ),
-    React.createElement(
-        'p',
-        null,
-        'Location: ',
-        user.userLocation
-    )
+    getLocation(user.userLocation)
 );
 
-//create app object title/subtitle
+// I --> create app object title/subtitle
 //use title/subtitle in the template
 //render template
+
+// II --> only render the subtitle (and p tag) if subtitle exist - logical and operator
+// render new p tag - if options.legth > 0 "Here are your options" "No options"
 var app = {
-    'title': 'The Matrix',
-    'subtitles': 'The Matrix Subtitles'
+    title: 'The Matrix',
+    subtitles: 'Put your life in the hands of a computer',
+    options: ['One Option', 'Two Options']
 };
 
-var templateObject = React.createElement(
+var templateApp = React.createElement(
     'div',
     null,
     React.createElement(
@@ -93,6 +104,16 @@ var templateObject = React.createElement(
         null,
         'Subtitles: ',
         app.subtitles
+    ),
+    app.subtitles && React.createElement(
+        'p',
+        null,
+        app.subtitles
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' : 'No Options'
     ),
     React.createElement(
         'ol',
@@ -112,4 +133,4 @@ var templateObject = React.createElement(
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateObject, appRoot);
+ReactDOM.render(templateApp, appRoot);
