@@ -4,12 +4,12 @@ class IndecisionApp extends React.Component {
         const subTitle = 'Put your life in the hands of a computer :)!';
         const options = ['Thing One', 'Thing Two', 'Thing Three', 'Thing Four'];
 
-        return(
+        return (
             <div>
-            <Header title={title} subtitle={subTitle}/>
-            <Action />
-            <Options options={options}/>
-            <AddOption />
+                <Header title={title} subtitle={subTitle} />
+                <Action />
+                <Options options={options} />
+                <AddOption />
             </div>
         )
     }
@@ -18,32 +18,39 @@ class IndecisionApp extends React.Component {
 class Header extends React.Component {
     render() {
         return (
-        <div>
-            <h1>{this.props.title}</h1>
-            <h2>{this.props.subtitle}</h2>
-        </div>
+            <div>
+                <h1>{this.props.title}</h1>
+                <h2>{this.props.subtitle}</h2>
+            </div>
         );
     }
 }
 
 class Action extends React.Component {
+    handlePick() {
+        alert('Handle Pick!');
+    }
     render() {
-        return ( 
+        return (
             <div>
-                <button>What should I do?</button>
+                <button onClick={this.handlePick}>What should I do?</button>
             </div>
         );
     }
 }
 
 class Options extends React.Component {
+    handleRemoveAll() {
+        alert('handleRemoveAll')
+    }
     render() {
-        return ( 
+        return (
             <div>
-            {
-                // this.props.options.map((option) => <p key={option}>{option}</p>)
-                this.props.options.map((option) => <Option key={option} optionTex={option}/>)
-            }
+                <button onClick={this.handleRemoveAll}>Remove All</button>
+                {
+                    // this.props.options.map((option) => <p key={option}>{option}</p>)
+                    this.props.options.map((option) => <Option key={option} optionTex={option} />)
+                }
             </div>
         );
     }
@@ -51,7 +58,7 @@ class Options extends React.Component {
 
 class Option extends React.Component {
     render() {
-        return ( 
+        return (
             <div>
                 Option: {this.props.optionTex}
             </div>
@@ -60,10 +67,22 @@ class Option extends React.Component {
 }
 
 class AddOption extends React.Component {
+    handleAddOption(e){
+        e.preventDefault();
+        const option = e.target.elements.option.value.trim();
+
+        if(option) {
+            alert(option);
+        }
+    }
+
     render() {
-        return ( 
+        return (
             <div>
-                AddOptions component here!
+                <form onSubmit={this.handleAddOption}>
+                    <input type="text" name="option" />
+                    <button> Add Option</button>
+                </form>
             </div>
         );
     }
